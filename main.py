@@ -2,25 +2,25 @@
 Simple Knowledge Graph Pipeline using Google LangExtract + Azure OpenAI
 
 Install:
-    pip install langextract langextract-azureopenai networkx matplotlib
+    pip install langextract langextract-azureopenai networkx matplotlib python-dotenv
 
-Set these env vars (or fill in directly below):
-    AZURE_OPENAI_API_KEY      = your Azure OpenAI key
-    AZURE_OPENAI_ENDPOINT     = https://your-resource.openai.azure.com/
-    AZURE_OPENAI_API_VERSION  = 2024-12-01-preview
-    AZURE_OPENAI_DEPLOYMENT   = your deployment name (e.g. gpt-4o)
+Create a .env file in the same folder:
+    AZURE_OPENAI_API_KEY=your_azure_openai_key_here
+    AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+    AZURE_OPENAI_API_VERSION=2024-12-01-preview
+    AZURE_OPENAI_DEPLOYMENT=gpt-4o
 """
 
 import os
 import langextract as lx
 import networkx as nx
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
 
-# ── 1. Configure Azure OpenAI credentials ────────────────────────────────────
-os.environ["AZURE_OPENAI_API_KEY"]     = "your_azure_openai_key_here"
-os.environ["AZURE_OPENAI_ENDPOINT"]    = "https://your-resource.openai.azure.com/"
-os.environ["AZURE_OPENAI_API_VERSION"] = "2024-12-01-preview"
-DEPLOYMENT_NAME = "gpt-4o"   # your Azure deployment name
+# ── 1. Load credentials from .env file ───────────────────────────────────────
+load_dotenv()  # reads .env from the current directory
+
+DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
 
 # ── 2. Build ModelConfig for Azure OpenAI ────────────────────────────────────
 azure_config = lx.factory.ModelConfig(
