@@ -1,0 +1,15 @@
+{
+ "entity_classes": [
+  "Actor",
+  "Activity",
+  "Concept",
+  "Deliverable",
+  "Document",
+  "Entity",
+  "Event",
+  "Procedure",
+  "Process",
+  "Role",
+  "System"
+ ]
+}

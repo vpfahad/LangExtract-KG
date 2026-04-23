@@ -1,0 +1,10 @@
+{
+ "relations": [
+  "SUPPORTS",
+  "OVERSEES",
+  "GENERATES",
+  "DEPENDS_ON",
+  "PRODUCES",
+  "MANAGES"
+ ]
+}
