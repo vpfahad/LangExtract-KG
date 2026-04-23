@@ -1,41 +1,40 @@
-import json
-from config import client, MODEL_NAME
+import langextract as lx
+from config import client, MODEL
 
+def create_extractor(entity_classes, relation_types):
 
-def extract_entities_relations(chunk, entity_classes, relation_types):
+    schema = {
+        "entities": {
+            "type": "list",
+            "items": {
+                "name": "string",
+                "class": entity_classes
+            }
+        },
+        "relations": {
+            "type": "list",
+            "items": {
+                "source": "string",
+                "relation": relation_types,
+                "target": "string"
+            }
+        }
+    }
 
-    prompt = f"""
-You are an information extraction system.
-
-Extract entities and relations from the text.
-
-Entity Classes:
-{entity_classes}
-
-Relation Types:
-{relation_types}
-
-Return JSON format:
-
-{{
- "entities":[
-   {{"name":"","class":""}}
- ],
- "relations":[
-   {{"source":"","relation":"","target":""}}
- ]
-}}
-
-Text:
-{chunk}
-"""
-
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0
+    extractor = lx.Extractor(
+        model=MODEL,
+        client=client,
+        schema=schema
     )
 
-    output = response.choices[0].message.content
+    return extractor
 
-    return json.loads(output)
+
+def extract_from_chunk(extractor, text):
+
+    result = extractor.extract(text)
+
+    return {
+        "entities": result.get("entities", []),
+        "relations": result.get("relations", [])
+    }

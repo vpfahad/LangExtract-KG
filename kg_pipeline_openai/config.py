@@ -7,4 +7,4 @@ client = AzureOpenAI(
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
 )
 
-MODEL = os.getenv("AZURE_OPENAI_DEPLOYMENT")
+MODEL_NAME = "gpt-4o"

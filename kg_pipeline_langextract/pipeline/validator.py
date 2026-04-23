@@ -1,17 +1,17 @@
 def validate_entities(entities, allowed_classes):
 
-    valid_entities = []
+    valid = []
 
     for e in entities:
         if e["class"] in allowed_classes:
-            valid_entities.append(e)
+            valid.append(e)
 
-    return valid_entities
+    return valid
 
 
 def validate_relations(relations, allowed_relations, entity_names):
 
-    valid_relations = []
+    valid = []
 
     for r in relations:
 
@@ -24,6 +24,6 @@ def validate_relations(relations, allowed_relations, entity_names):
         if r["target"] not in entity_names:
             continue
 
-        valid_relations.append(r)
+        valid.append(r)
 
-    return valid_relations
+    return valid
