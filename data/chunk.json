@@ -1,0 +1,14 @@
+[
+  {
+    "chunk_id": "doc_001_chk_01",
+    "text": "The Engineering surveillance activity is a critical component of the overall Quality Management Programme. This process oversees the technical integrity of all deliverables. Currently, the surveillance status is Active and it is performed on a Weekly frequency to ensure compliance with safety standards."
+  },
+  {
+    "chunk_id": "doc_001_chk_02",
+    "text": "The Lead Auditor role oversees the Engineering surveillance activity to verify that all Procedure documents are followed strictly. The Quality Management Programme depends on the System for Generating automated Compliance Reports every month."
+  },
+  {
+    "chunk_id": "doc_002_chk_01",
+    "text": "Our internal ERP System generates the Monthly Audit Document automatically. This document serves as a primary Deliverable for the regulatory board. The entire Process produces a Final Safety Certificate once all activities are marked as Completed."
+  }
+]
